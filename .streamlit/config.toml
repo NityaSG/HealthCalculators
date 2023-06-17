@@ -5,4 +5,4 @@ secondaryBackgroundColor="#639960"
 textColor="#262730"
 font="sans serif"
 
-baseUrlPath = "http://google.com"
+baseUrlPath = "./pages/BMI.py"

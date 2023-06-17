@@ -38,6 +38,8 @@ def interpret_preterm_birth_risk(risk):
     return interpretation
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Preterm Birth Risk Calculator")
     st.write("Enter the required information to calculate your preterm birth risk.")
 
