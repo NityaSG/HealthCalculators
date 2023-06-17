@@ -1,6 +1,8 @@
 [theme]
 primaryColor="#009900"
 backgroundColor="#ffffff"
-secondaryBackgroundColor="#99d6ff"
+secondaryBackgroundColor="#639960"
 textColor="#262730"
 font="sans serif"
+
+baseUrlPath = "./BMI.py"

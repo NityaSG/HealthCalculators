@@ -80,4 +80,4 @@ def main():
 
     # Calculate PSI
     if st.button("Calculate"):
-        points = calculate_psi(age, gender, temperature, heart_rate, respiratory_rate, systolic_bp, presence_of_neop
+        points = calculate_psi(age, gender, temperature, heart_rate, respiratory_rate, systolic_bp, presence_of_neoplastic_disease)
