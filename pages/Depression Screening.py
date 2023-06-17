@@ -10,6 +10,8 @@ def calculate_depression_likelihood(answers):
     return depression_likelihood
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Depression Screening Calculator")
     st.write("Assess the likelihood of depression based on a series of questions.")
 

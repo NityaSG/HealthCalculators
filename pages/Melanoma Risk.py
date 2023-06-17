@@ -34,6 +34,8 @@ def interpret_melanoma_risk(risk):
     return interpretation
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Melanoma Risk Calculator")
     st.write("Enter the required information to calculate your melanoma risk.")
 

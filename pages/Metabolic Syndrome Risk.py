@@ -22,6 +22,8 @@ def calculate_metabolic_syndrome_risk(waist_circumference, blood_pressure, blood
     return metabolic_syndrome_risk
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Metabolic Syndrome Calculator")
     st.write("Determine your risk of metabolic syndrome.")
 

@@ -11,6 +11,8 @@ def calculate_gfr(age, gender, serum_creatinine, is_aa=False):
     return gfr
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Glomerular Filtration Rate (GFR) Calculator")
     st.write("Enter the required information to calculate your GFR.")
 

@@ -18,6 +18,8 @@ def identify_allergens(symptoms):
     return allergens
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Allergy Symptom Checker")
     st.write("Check the symptoms you are experiencing to identify potential allergens.")
 

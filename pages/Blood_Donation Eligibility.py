@@ -22,6 +22,8 @@ def check_eligibility(age, weight, medical_history, recent_travel, recent_medica
     return eligibility
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Blood Donation Eligibility Calculator")
     st.write("Check your eligibility to donate blood.")
 

@@ -16,6 +16,8 @@ def interpret_whtr(whtr):
     return interpretation
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Waist-to-Height Ratio Calculator")
     st.write("Enter your height and waist measurements to calculate your WHtR.")
 

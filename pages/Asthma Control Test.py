@@ -15,6 +15,8 @@ def interpret_act_score(score):
     return interpretation
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Asthma Control Test (ACT) Calculator")
     st.write("Answer the following questions to assess your asthma control.")
 

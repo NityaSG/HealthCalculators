@@ -28,6 +28,8 @@ def calculate_fracture_risk(age, gender, weight, smoking, bmd):
     return fracture_risk
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("10-Year Fracture Risk Calculator")
     st.write("Estimate your 10-year risk of experiencing a fracture.")
 

@@ -9,6 +9,8 @@ def calculate_meld_score(bilirubin, creatinine, inr):
     return meld_score
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("MELD Score Calculator")
     st.write("Calculate the Model for End-Stage Liver Disease (MELD) score.")
 

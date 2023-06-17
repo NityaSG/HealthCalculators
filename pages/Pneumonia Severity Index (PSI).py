@@ -66,6 +66,8 @@ def interpret_psi(points):
     return interpretation
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Pneumonia Severity Index (PSI) Calculator")
     st.write("Enter the required information to calculate your PSI.")
 

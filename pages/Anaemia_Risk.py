@@ -25,6 +25,8 @@ def calculate_anemia_risk(age, gender, dietary_habits, medical_history, fatigue,
     return anemia_risk
 
 def main():
+    z,x,c=st.columns([1,10,1])
+    x.image('THealthzoo.png')
     st.title("Anemia Risk Calculator")
     st.write("Assess your risk of anemia based on various factors.")
 
