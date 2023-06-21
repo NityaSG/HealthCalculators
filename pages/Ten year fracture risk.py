@@ -36,7 +36,8 @@ def main():
     # User input
     age = st.number_input("Age", min_value=1, max_value=120, value=30, step=1)
     gender = st.selectbox("Gender", ["Male", "Female"])
-    weight = st.number_input("Weight (kg)", min_value=1, value=60, step=1)
+    weight = st.number_input("Weight (pounds)", min_value=1, value=60, step=1)
+    weight*=2.205
     smoking = st.selectbox("Smoking", ["No", "Yes"])
     bmd = st.number_input("Bone Mineral Density", min_value=0.1, value=1.0, step=0.1)
 

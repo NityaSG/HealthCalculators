@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(page_title="Calorie Intake",layout='wide')
+#st.set_page_config(page_title="Calorie Intake",layout='wide')
 def calculate_calorie_intake(age, gender, weight, height, activity_level):
     if gender.lower() == 'male':
         bmr = 10 * weight + 6.25 * height - 5 * age + 5

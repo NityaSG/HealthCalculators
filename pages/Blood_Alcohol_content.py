@@ -12,7 +12,8 @@ z,x,c=st.columns([1,10,1])
 x.image('THealthzoo.png')
 st.title("Blood Alcohol Content (BAC) Calculator")
 
-weight = st.number_input("Weight (in kg)", min_value=1.0)
+weight = st.number_input("Weight (in pounds)", min_value=1.0)
+weight*=2.205
 gender = st.selectbox("Gender", ["Male", "Female"])
 drinks = st.number_input("Number of Standard Drinks", min_value=1)
 alcohol_percentage = st.number_input("Alcohol Percentage per Drink", min_value=0.1, max_value=100.0, step=0.1)

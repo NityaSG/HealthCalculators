@@ -1,34 +1,27 @@
 import streamlit as st
 
-def calculate_one_rep_max(weight_lifted, reps):
-    one_rep_max = weight_lifted * (1 + (reps / 30))
-    return one_rep_max
+# One Rep Max (1RM) calculation
+def calculate_1rm(weight_lifted, repetitions, body_weight, age):
+    epley_coefficient = 1 + (repetitions / 30)
+    one_rep_max = weight_lifted * epley_coefficient
+    adjusted_one_rep_max = one_rep_max * (1 + 0.0333 * age)
+    relative_one_rep_max = adjusted_one_rep_max / body_weight
+    return round(relative_one_rep_max, 2)
 
-def calculate_training_intensity(one_rep_max):
-    intensity_ranges = {
-        "Endurance": (0.6, 0.69),
-        "Hypertrophy": (0.7, 0.79),
-        "Strength": (0.8, 0.89),
-        "Power": (0.9, 1.0)
-    }
-    training_intensity = {}
-    for intensity, (lower, upper) in intensity_ranges.items():
-        training_intensity[intensity] = (lower * one_rep_max, upper * one_rep_max)
-    return training_intensity
+# Streamlit UI
+st.set_page_config(page_title="1RM Calculator", page_icon="💪")
+st.title("One Rep Max (1RM) Calculator")
+st.caption("Calculate your estimated one rep max based on weight lifted, number of repetitions, body weight, and age.")
+st.write("Enter your information to calculate your estimated 1RM.")
 
-z,x,c=st.columns([1,10,1])
-x.image('THealthzoo.png')
-st.title("One-Rep Max (1RM) Calculator")
+weight_lifted = st.number_input("Weight Lifted (in pounds):")
+repetitions = st.number_input("Number of Repetitions:")
+body_weight = st.number_input("Body Weight (in pounds):")
+age = st.number_input("Age:")
 
-weight_lifted = st.number_input("Weight Lifted (in kg)", min_value=1.0)
-reps = st.number_input("Number of Repetitions", min_value=1.0)
-
-one_rep_max = calculate_one_rep_max(weight_lifted, reps)
-training_intensity = calculate_training_intensity(one_rep_max)
-
-st.subheader("Estimated One-Rep Max (1RM)")
-st.write(f"{one_rep_max:.2f} kg")
-
-st.subheader("Training Intensity Ranges")
-for intensity, (lower, upper) in training_intensity.items():
-    st.write(f"{intensity}: {lower:.2f} kg - {upper:.2f} kg")
+if st.button("Calculate 1RM"):
+    if weight_lifted <= 0 or repetitions <= 0 or body_weight <= 0 or age <= 0:
+        st.error("Please enter valid values for weight lifted, repetitions, body weight, and age.")
+    else:
+        one_rep_max = calculate_1rm(weight_lifted, repetitions, body_weight, age)
+        st.success(f"Your estimated One Rep Max (1RM) relative to body weight is {one_rep_max}.")

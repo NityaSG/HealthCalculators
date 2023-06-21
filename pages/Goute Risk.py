@@ -37,6 +37,7 @@ def main():
     age = st.number_input("Age", min_value=1, max_value=120, value=40, step=1)
     gender = st.selectbox("Gender", ["Male", "Female"])
     weight = st.number_input("Weight (kg)", min_value=1, value=70, step=1)
+    weight*=2.205
     blood_pressure = st.number_input("Blood Pressure (mmHg)", min_value=1, value=120, step=1)
     diet = st.selectbox("Diet", ["Low in Purines", "Moderate in Purines", "High in Purines"])
     alcohol_consumption = st.selectbox("Alcohol Consumption", ["Low", "Moderate", "High"])

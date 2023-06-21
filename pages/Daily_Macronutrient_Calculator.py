@@ -1,55 +1,55 @@
 import streamlit as st
 
-def calculate_daily_calorie_needs(weight, height, age, gender, activity_level, goal):
-    if gender == "Male":
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5
+# Daily Macronutrients Calculator
+def calculate_macronutrients(weight, height, age, gender, activity_level):
+    # Convert height to inches
+    height_in = int(height * 12)
+
+    # Calculate Basal Metabolic Rate (BMR)
+    if gender == 'Male':
+        bmr = 10 * weight + 6.25 * height_in - 5 * age + 5
     else:
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161
+        bmr = 10 * weight + 6.25 * height_in - 5 * age - 161
 
-    activity_levels = {
-        "Sedentary": 1.2,
-        "Lightly Active": 1.375,
-        "Moderately Active": 1.55,
-        "Very Active": 1.725,
-        "Extra Active": 1.9
+    # Apply activity level multiplier
+    activity_multiplier = {
+        'Sedentary': 1.2,
+        'Lightly Active': 1.375,
+        'Moderately Active': 1.55,
+        'Very Active': 1.725,
+        'Extra Active': 1.9
     }
-    calorie_intake = bmr * activity_levels[activity_level]
+    bmr *= activity_multiplier[activity_level]
 
-    if goal == "Weight Loss":
-        calorie_intake -= 500
-    elif goal == "Muscle Gain":
-        calorie_intake += 250
+    # Calculate macronutrient distribution
+    protein = 0.8 * weight
+    fat = 0.3 * bmr / 9
+    carbs = (bmr - (protein * 4) - (fat * 9)) / 4
 
-    return calorie_intake
+    return {
+        'Protein': round(protein, 2),
+        'Fat': round(fat, 2),
+        'Carbohydrates': round(carbs, 2)
+    }
 
-def calculate_macronutrients(calorie_intake, protein_ratio, fat_ratio, carb_ratio):
-    protein = (protein_ratio / 100) * calorie_intake / 4
-    fat = (fat_ratio / 100) * calorie_intake / 9
-    carb = (carb_ratio / 100) * calorie_intake / 4
+# Streamlit UI
+st.set_page_config(page_title="Macronutrients Calculator", page_icon="🥦")
+st.title("Daily Macronutrients Calculator")
+st.caption("Calculate your daily macronutrient needs based on weight, height, age, gender, and activity level.")
+st.write("Enter your information to calculate your daily macronutrient needs.")
 
-    return protein, fat, carb
+weight = st.number_input("Weight (in pounds):")
+height = st.number_input("Height (in feet):")
+age = st.number_input("Age:")
+gender = st.radio("Gender", ['Male', 'Female'])
+activity_level = st.selectbox("Activity Level", ['Sedentary', 'Lightly Active', 'Moderately Active', 'Very Active', 'Extra Active'])
 
-z,x,c=st.columns([1,10,1])
-x.image('THealthzoo.png')
-st.title("Daily Macronutrient Calculator")
-
-weight = st.number_input("Weight (in kg)", min_value=1.0)
-height = st.number_input("Height (in cm)", min_value=1.0)
-age = st.number_input("Age (in years)", min_value=1.0)
-gender = st.selectbox("Gender", ["Male", "Female"])
-activity_level = st.selectbox("Activity Level", ["Sedentary", "Lightly Active", "Moderately Active", "Very Active", "Extra Active"])
-goal = st.selectbox("Goal", ["Weight Loss", "Maintenance", "Muscle Gain"])
-protein_ratio = st.number_input("Protein Ratio (%)", min_value=0.0, max_value=100.0)
-fat_ratio = st.number_input("Fat Ratio (%)", min_value=0.0, max_value=100.0)
-carb_ratio = 100.0 - protein_ratio - fat_ratio
-
-calorie_intake = calculate_daily_calorie_needs(weight, height, age, gender, activity_level, goal)
-protein, fat, carb = calculate_macronutrients(calorie_intake, protein_ratio, fat_ratio, carb_ratio)
-
-st.subheader("Daily Calorie Intake")
-st.write(f"{calorie_intake:.2f} calories")
-
-st.subheader("Daily Macronutrient Breakdown")
-st.write(f"Protein: {protein:.2f} grams")
-st.write(f"Fat: {fat:.2f} grams")
-st.write(f"Carbohydrate: {carb:.2f} grams")
+if st.button("Calculate"):
+    if weight <= 0 or height <= 0 or age <= 0:
+        st.error("Please enter valid values for weight, height, age.")
+    else:
+        macronutrients = calculate_macronutrients(weight, height, age, gender, activity_level)
+        st.success("Your Daily Macronutrient Needs:")
+        st.write(f"Protein: {macronutrients['Protein']} grams")
+        st.write(f"Fat: {macronutrients['Fat']} grams")
+        st.write(f"Carbohydrates: {macronutrients['Carbohydrates']} grams")

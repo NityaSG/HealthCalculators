@@ -33,7 +33,8 @@ def main():
     # User input
     age = st.number_input("Age", min_value=1, max_value=120, value=50, step=1)
     gender = st.selectbox("Gender", ["Male", "Female"])
-    weight = st.number_input("Weight (kg)", min_value=1, value=70, step=1)
+    weight = st.number_input("Weight (Pounds)", min_value=1, value=70, step=1)
+    weight*=2.205
     smoking = st.selectbox("Smoking", ["No", "Yes"])
     alcohol = st.selectbox("Alcohol Consumption", ["No", "Yes"])
     calcium_intake = st.number_input("Calcium Intake (mg/day)", min_value=1, value=1000, step=1)

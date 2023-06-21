@@ -29,7 +29,8 @@ def main():
 
     # User input
     age = st.number_input("Age", min_value=1, max_value=120, value=40, step=1)
-    weight = st.number_input("Weight (kg)", min_value=1, value=70, step=1)
+    weight = st.number_input("Weight (pounds)", min_value=1, value=70, step=1)
+    weight*=2.205
     family_history = st.selectbox("Family History of Hypertension", ["No", "Yes"])
     lifestyle_habits = st.selectbox("Lifestyle Habits", ["Active", "Moderately Active", "Sedentary"])
     existing_conditions = st.selectbox("Existing Health Conditions", ["No", "Yes"])

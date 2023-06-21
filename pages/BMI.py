@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(page_title="BMI", page_icon="📈")
+
 def calculate_bmi(height, weight):
     bmi = weight / ((height/100) ** 2)
     return round(bmi, 2)
@@ -15,20 +15,23 @@ def interpret_bmi(bmi):
         return "Obese"
 
 # Streamlit UI
-z,x,c=st.columns([1,10,1])
-x.image('THealthzoo.png')
 st.title("BMI Calculator")
 st.caption("BMI (Body Mass Index) is a commonly used measurement to assess the relationship between a person's weight and height. It provides a general indication of whether an individual's weight is within a healthy range for their height.")
 st.write("Enter your height and weight to calculate your BMI.")
 
-height = st.number_input("Height (in cm):")
-weight = st.number_input("Weight (in kg):")
+metric_options = ["FPS (Frames Per Second)", "SI (International System of Units)"]
+selected_metric = st.radio("Select Metric", metric_options)
+
+height = st.number_input("Height:",step=0.1)
+weight = st.number_input("Weight:")
 
 if st.button("Calculate BMI"):
     if height <= 0 or weight <= 0:
         st.error("Please enter valid height and weight values.")
     else:
+        if selected_metric == "FPS (Frames Per Second)":
+            height *= 30.48  # Convert feet to cm
+            weight *= 0.45359237  # Convert pounds to kg
         bmi = calculate_bmi(height, weight)
         category = interpret_bmi(bmi)
         st.success(f"Your BMI is {bmi}. You are {category}.")
-

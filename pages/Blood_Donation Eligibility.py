@@ -29,7 +29,8 @@ def main():
 
     # User input
     age = st.number_input("Age", min_value=1, max_value=120, value=30, step=1)
-    weight = st.number_input("Weight (kg)", min_value=1, value=60, step=1)
+    weight = st.number_input("Weight (Pounds)", min_value=1, value=60, step=1)
+    weight*=2.205
     medical_history = st.selectbox("Medical History", ["No", "Yes"])
     recent_travel = st.selectbox("Recent Travel", ["No", "Yes"])
     recent_medication = st.selectbox("Recent Medication", ["No", "Yes"])

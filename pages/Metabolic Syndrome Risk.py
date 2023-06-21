@@ -28,7 +28,8 @@ def main():
     st.write("Determine your risk of metabolic syndrome.")
 
     # User input
-    waist_circumference = st.number_input("Waist Circumference (cm)", min_value=1, value=80, step=1)
+    waist_circumference = st.number_input("Waist Circumference (ft)", min_value=1, value=80, step=1)
+    waist_circumference/=30.48
     blood_pressure = st.number_input("Blood Pressure (mmHg)", min_value=1, value=120, step=1)
     blood_sugar = st.number_input("Blood Sugar (mg/dL)", min_value=1, value=90, step=1)
     cholesterol = st.number_input("Cholesterol (mg/dL)", min_value=1, value=200, step=1)
