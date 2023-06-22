@@ -19,7 +19,7 @@ st.title("BMI Calculator")
 st.caption("BMI (Body Mass Index) is a commonly used measurement to assess the relationship between a person's weight and height. It provides a general indication of whether an individual's weight is within a healthy range for their height.")
 st.write("Enter your height and weight to calculate your BMI.")
 
-metric_options = ["FPS (Frames Per Second)", "SI (International System of Units)"]
+metric_options = ["FPS", "SI"]
 selected_metric = st.radio("Select Metric", metric_options)
 
 height = st.number_input("Height:",step=0.1)

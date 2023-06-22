@@ -1,4 +1,5 @@
 import streamlit as st
+st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
 hide_footer_style = """
     <style>
     .reportview-container .main footer {visibility: hidden;}    
@@ -7,12 +8,27 @@ st.markdown(hide_footer_style, unsafe_allow_html=True)
 hide_menu_style = """
         <style>
         #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
         </style>
         """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
+hide_streamlit_style = """
+<style>
+.css-1y0tads {padding-top: 0rem;}
+</style>
+
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 #st.set_page_config(page_title="home")
 z,x,c=st.columns([1,10,1])
 x.image('THealthzoo.png')
+if 'sidebar_state' not in st.session_state:
+    st.session_state.sidebar_state = 'expanded'
+if st.button('Click to toggle sidebar state'):
+    st.session_state.sidebar_state = 'collapsed' if st.session_state.sidebar_state == 'expanded' else 'expanded'
+    # Force an app rerun after switching the sidebar state.
+    st.experimental_rerun()
 t,t0, t1, t3, t2= st.tabs(["Home","About Us", "Contact Us","Privacy Statement","Terms and Conditions"])
 t0.subheader("About Us")
 t0.write("ThinkRoman Ventures is a company that operates at the intersection of technology and healthcare. Its goal is to improve the lives of people around the world through the use of cutting-edge technology and innovative approaches to healthcare. One of the main areas of focus for ThinkRoman Ventures is the development of new health and wellness products and innovations. These may include fitness tracker and wellness apps, or products that can help to prevent or manage chronic conditions. In addition to developing new products, ThinkRoman Ventures is also using existing technologies in new and innovative ways to improve healthcare. This may involve using data analytics and machine learning to better understand and predict health outcomes, or using virtual reality and other immersive technologies to train healthcare professionals and deliver care to patients. Overall, ThinkRoman Ventures is dedicated to using technology and innovation to drive positive change in the healthcare industry, with the goal of helping people around the world live healthier, more fulfilling lives.")
