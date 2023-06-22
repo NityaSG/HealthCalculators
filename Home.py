@@ -1,4 +1,6 @@
 import streamlit as st
+if 'sidebar_state' not in st.session_state:
+    st.session_state.sidebar_state = 'collapsed'
 st.set_page_config(initial_sidebar_state=st.session_state.sidebar_state)
 hide_footer_style = """
     <style>
@@ -23,15 +25,16 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 #st.set_page_config(page_title="home")
 z,x,c=st.columns([1,10,1])
 x.image('THealthzoo.png')
-if 'sidebar_state' not in st.session_state:
-    st.session_state.sidebar_state = 'expanded'
-if st.button('Click to toggle sidebar state'):
-    st.session_state.sidebar_state = 'collapsed' if st.session_state.sidebar_state == 'expanded' else 'expanded'
-    # Force an app rerun after switching the sidebar state.
-    st.experimental_rerun()
+
 t,t0, t1, t3, t2= st.tabs(["Home","About Us", "Contact Us","Privacy Statement","Terms and Conditions"])
 t0.subheader("About Us")
 t0.write("ThinkRoman Ventures is a company that operates at the intersection of technology and healthcare. Its goal is to improve the lives of people around the world through the use of cutting-edge technology and innovative approaches to healthcare. One of the main areas of focus for ThinkRoman Ventures is the development of new health and wellness products and innovations. These may include fitness tracker and wellness apps, or products that can help to prevent or manage chronic conditions. In addition to developing new products, ThinkRoman Ventures is also using existing technologies in new and innovative ways to improve healthcare. This may involve using data analytics and machine learning to better understand and predict health outcomes, or using virtual reality and other immersive technologies to train healthcare professionals and deliver care to patients. Overall, ThinkRoman Ventures is dedicated to using technology and innovation to drive positive change in the healthcare industry, with the goal of helping people around the world live healthier, more fulfilling lives.")
+t.image('banner.jpg')
+if t.button('View Calculators'):
+    st.session_state.sidebar_state = 'collapsed' if st.session_state.sidebar_state == 'expanded' else 'expanded'
+    # Force an app rerun after switching the sidebar state.
+    st.experimental_rerun()
+t.write("Welcome to the ThinkRoman Ventures Healthcare Calculator App! We provide a comprehensive set of healthcare calculators to assess and evaluate various aspects of your health, empowering you with valuable insights for a healthier future.")
 t1.header("Contact Us")
 t1.subheader("ADDRESS")
 t1.write("Room No:03, Nila Building, Opposite to ESI Hospitals, Thrissur, Kerala - 680596")
@@ -86,6 +89,4 @@ t2.write("The Center welcomes your questions or comments regarding the Terms: ")
 
 t2.subheader("EFFECTIVE DATE")
 t2.write("The effective date of this policy is November 13, 2022.")
-t.image('banner.jpg')
-t.write("Welcome to the ThinkRoman Ventures Healthcare Calculator App! We provide a comprehensive set of healthcare calculators to assess and evaluate various aspects of your health, empowering you with valuable insights for a healthier future.")
 t.caption("Disclaimer:The ThinkRoman Ventures Healthcare Calculator App provides calculators for informational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. The  results are not intended for clinical decision-making and should not replace the expertise of healthcare professionals.")
